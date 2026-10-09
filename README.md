@@ -54,6 +54,15 @@ npm run build
 
 The build writes the static app, local OCR assets, language model, calendar library, and fonts into `dist/`. The included `netlify.toml` configures this build and the calendar API in `netlify/functions/calendar.mjs`. Calendar subscriptions need that function, so use a Netlify build when you are ready to deploy. No deployment is performed by the commands above.
 
+To deploy the reviewed version in Netlify:
+
+1. Open [Netlify](https://app.netlify.com/start), choose **Import an existing project**, and connect GitHub.
+2. Select **falariee/vald2d** and the **codex/stride-local-review** branch.
+3. Keep the repository settings: build command **npm run build**, publish directory **dist**, functions directory **netlify/functions**, and Node.js **22**. These are already declared in `netlify.toml`.
+4. Deploy the project and open its HTTPS `.netlify.app` address. Later pushes to that selected branch can trigger new deployments.
+
+Use a repository build so the calendar API is included. The deployed site starts with separate browser storage from localhost. Netlify hosting does not provide accounts or cloud backup for workout data and photo posts; those remain on each device until a database and authentication are added.
+
 The calendar API accepts only published HTTPS iCloud URLs, validates redirect destinations, limits response size, and uses a timeout. It does not require an API key. GPS and notifications need a secure context (localhost or HTTPS).
 
 Automated checks cover BMI, weekly totals, multi-session screenshot parsing, daily-post validation and migration, booking-email parsing and timezone handling, monthly grids and streaks, calendar recurrence and reminders, and calendar API request validation. Real-device GPS and a personal iCloud subscription still need checking with your phone and calendar link.
