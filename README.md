@@ -16,7 +16,7 @@ npm start
 
 4. Open **http://localhost:3000** in your browser. Keep the terminal running while you review the app; press **Ctrl+C** when finished.
 
-These commands work in Windows PowerShell, macOS Terminal, and Linux. Bash, curl, and separate checksum tools are not required. The ZIP includes the English OCR model; setup verifies it and downloads a replacement from its pinned source only if it is missing or invalid. npm needs Internet access to install the locked dependencies.
+These commands work in Windows PowerShell, macOS Terminal, and Linux. Bash, curl, and separate checksum tools are not required. Setup verifies any existing English OCR model and downloads it from its pinned source when missing or invalid. GitHub source downloads prepare the model on the first setup. Internet access is needed to install the locked dependencies and fetch the model when required.
 
 To use another port, set `PORT` before starting the app. For example, in PowerShell: `$env:PORT=3001; npm start`, or on macOS/Linux: `PORT=3001 npm start`.
 
