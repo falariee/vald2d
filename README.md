@@ -5,7 +5,7 @@ A personal fitness app for screenshot imports, gym sessions, live GPS runs, heig
 ## Review on your computer
 
 1. Install **Node.js 20 or newer** from [nodejs.org](https://nodejs.org/en/download). Node.js includes npm.
-2. Extract the local review ZIP. Open a terminal inside the `stride-local-review` folder, where `package.json` lives.
+2. Extract the ZIP. Open a terminal inside the extracted project folder—the one containing `package.json`.
 3. Run:
 
 ```sh
