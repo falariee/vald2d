@@ -5,7 +5,7 @@ import {checkNodeVersion,prepareModel} from './setup.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const output=path.join(root,'dist');
-const appFiles=['index.html','style.css','app.js','metrics.js','import.js','ocr-parser.js','icons.js','calendar.js','calendar-parser.js'];
+const appFiles=['index.html','style.css','app.js','metrics.js','import.js','ocr-parser.js','icons.js','calendar.js','calendar-parser.js','journal.js','journal-model.js','booking-import.js','booking-parser.js','monthly-overview.js','monthly-model.js'];
 const vendorFiles=[
   ['node_modules/ical.js/dist/ical.min.js','vendor/ical.js'],
   ['node_modules/tesseract.js/dist/tesseract.min.js','ocr/tesseract.min.js'],

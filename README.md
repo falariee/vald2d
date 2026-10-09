@@ -1,6 +1,6 @@
 # Stride
 
-A personal fitness app for screenshot imports, gym sessions, live GPS runs, height and weight check-ins, BMI, weekly reviews, photos, and Apple Calendar bookings.
+A personal fitness app for screenshot imports, gym sessions, live GPS runs, height and weight check-ins, BMI, weekly reviews, daily photo posts, booking emails, and monthly streaks.
 
 ## Review on your computer
 
@@ -26,14 +26,20 @@ To use another port, set `PORT` before starting the app. For example, in PowerSh
 - **Log activity:** runs record time, distance, pace, and optional calories. Gym sessions record time and optional calories. Seconds are preserved. Missing calories remain unknown; missing pace is calculated from duration and distance.
 - **Track a run:** allow location access. Keep the app open while running. GPS can be reviewed on localhost; deployment uses HTTPS. Background tracking is not supported.
 - **Progress:** enter height and weight to see adult BMI and keep a check-in history. BMI is a screening measure and does not account for muscle mass, pregnancy, or individual health needs.
-- **Photos:** add a photo to the progress journal.
-- **Bookings:** import a private `.ics` calendar export, or connect a published iCloud gym-calendar link. Choose a reminder lead time and enable notifications.
+- **Daily log:** write a dated caption, add up to six photos, and tag a post as Everyday, Run, Gym, or Rest. Browse the feed, browse photo carousels with buttons or arrow keys, filter by date or tag, and edit or delete posts. Text-only posts work too.
+- **Booking emails:** paste a Gmail gym-confirmation email or scan its screenshot. Review the detected name, location, start, and end before saving. The editor uses Singapore time (UTC+08:00). Past bookings stay available in the history; upcoming bookings can trigger reminders.
+- **Monthly overview:** open Bookings to browse months, switch between workout days and daily posts, and see your current and longest streaks. Multiple logs on one day count once. Planned bookings have a separate marker and do not increase a streak. Tap a date to filter bookings.
+- **Calendar imports:** optionally import a private `.ics` file or connect a published iCloud gym-calendar link from the expandable Calendar imports panel. Choose a reminder lead time and enable notifications.
 
 ## Data and calendar behavior
 
 Records and compressed photos are stored in this browser's localStorage. There are no accounts, cloud sync, or backups yet. Clearing site data removes records. The local site and a future Netlify site have separate browser storage, so records entered during local review will not automatically appear after deployment.
 
+Daily posts are a personal feed on this device; public profiles, likes, comments, and shared posts are not implemented. Existing photos migrate into dated posts once. Workout and posting streaks count consecutive logged days through today, or through yesterday if today has not been logged yet. Future dates do not count. Calendar days follow your device timezone.
+
 OCR runs on the device using Tesseract.js and locally served assets. Screenshots are not sent to a third-party AI service. Recognition depends on image clarity; confirm the values before saving. Dates are not inferred from relative captions.
+
+Booking-email imports do not log into Gmail or read future messages automatically. Import each new confirmation yourself. Only the reviewed booking fields are stored; email text, screenshots, customer/contact details, booking reference numbers, and door-entry links are discarded. Re-importing the same reviewed booking does not create a duplicate. Calendar imports and refreshes preserve saved email bookings.
 
 Apple Calendar supports private `.ics` file imports and subscriptions to published iCloud calendar links (`webcal://p…-caldav.icloud.com/published/…`). A published calendar is public to anyone with the link; use a separate gym calendar. No iCloud password is requested or stored. Private account login / CalDAV syncing is not implemented.
 
@@ -50,7 +56,7 @@ The build writes the static app, local OCR assets, language model, calendar libr
 
 The calendar API accepts only published HTTPS iCloud URLs, validates redirect destinations, limits response size, and uses a timeout. It does not require an API key. GPS and notifications need a secure context (localhost or HTTPS).
 
-Automated checks cover BMI, weekly totals, multi-session screenshot parsing, calendar recurrence and reminders, and calendar API request validation. Real-device GPS and a personal iCloud subscription still need checking with your phone and calendar link.
+Automated checks cover BMI, weekly totals, multi-session screenshot parsing, daily-post validation and migration, booking-email parsing and timezone handling, monthly grids and streaks, calendar recurrence and reminders, and calendar API request validation. Real-device GPS and a personal iCloud subscription still need checking with your phone and calendar link.
 
 ## Setup details
 
