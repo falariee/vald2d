@@ -1,0 +1,5 @@
+export function iconify(root){
+ const shapes={'↗':'M5 19 19 5M5 5h14v14','▥':'M4 6v12m4-15v18m8-18v18m4-15v12M8 12h8','◈':'M12 3 21 12 12 21 3 12Z M12 8 16 12 12 16 8 12Z'};
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];let node;while((node=walker.nextNode()))if(/[↗▥◈]/.test(node.textContent)&&!['SCRIPT','STYLE'].includes(node.parentElement.tagName))nodes.push(node);
+ for(const text of nodes){const fragment=document.createDocumentFragment();for(const part of text.textContent.split(/([↗▥◈])/)){if(!shapes[part]){fragment.append(document.createTextNode(part));continue}const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('class','inline-icon');svg.setAttribute('aria-hidden','true');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.8');const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',shapes[part]);svg.append(path);fragment.append(svg)}text.replaceWith(fragment)}
+}

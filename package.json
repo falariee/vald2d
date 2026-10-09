@@ -1,0 +1,1 @@
+{"name":"stride-fitness","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"node server.mjs","start":"node server.mjs","setup":"node scripts/setup.mjs","build":"node scripts/build.mjs","test":"node --test"},"engines":{"node":">=20"},"dependencies":{"ical.js":"^2.2.1","tesseract.js":"^7.0.0"}}

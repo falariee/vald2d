@@ -1,0 +1,8 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {parseCalendar,gymBooking,dueReminders} from './calendar-parser.js';
+import {validateCalendarUrl} from './calendar-fetch.js';
+const calendar='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:gym-1\r\nDTSTART:20261009T100000Z\r\nDTEND:20261009T110000Z\r\nRRULE:FREQ=WEEKLY;COUNT=3\r\nEXDATE:20261016T100000Z\r\nSUMMARY:ARK GRIT\r\nLOCATION:Hougang Blk 422\r\nEND:VEVENT\r\nEND:VCALENDAR';
+test('Apple calendar import expands repeats and respects exclusions',()=>{const events=parseCalendar(calendar,new Date('2026-10-09T00:00:00Z'));assert.equal(events.length,2);assert.equal(events[0].location,'Hougang Blk 422');assert.equal(events[1].start,'2026-10-23T10:00:00.000Z');assert.equal(gymBooking(events[0]),true)});
+test('reminders exclude past, all-day, and already notified events',()=>{const events=parseCalendar(calendar,new Date('2026-10-09T00:00:00Z'));const now=Date.parse('2026-10-09T09:40:00Z');assert.equal(dueReminders(events,now,30,new Set()).length,1);assert.equal(dueReminders(events,now,15,new Set()).length,0);assert.equal(dueReminders(events,now,30,new Set([events[0].id])).length,0);assert.equal(dueReminders([{...events[0],allDay:true}],now,30,new Set()).length,0)});
+test('calendar proxy only accepts published iCloud HTTPS URLs',()=>{assert.equal(validateCalendarUrl('webcal://p123-caldav.icloud.com/published/2/test').protocol,'https:');for(const url of ['http://localhost/x','https://evil.com/x','https://p123-caldav.icloud.com/private','https://p123-caldav.icloud.com:444/published/2/x','https://user:password@p123-caldav.icloud.com/published/2/x'])assert.throws(()=>validateCalendarUrl(url))});

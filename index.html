@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173d2c"><meta name="description" content="Your runs, gym sessions, progress, and bookings. All in one place.">
+  <title>Stride — Your week, in motion</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 28 28%27%3E%3Crect width=%2728%27 height=%2728%27 rx=%277%27 fill=%27%23c6f36a%27/%3E%3Cpath d=%27m5 22 7-17 4 10 7-10-7 17-4-10Z%27 fill=%27%23173d2c%27/%3E%3C/svg%3E">
+</head>
+<body>
+<svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-run" viewBox="0 0 24 24"><path d="m4 18 5-6 4 3 3 6M8 12l4-6 4 4h4M12 6l-5-1-3 4"/><circle cx="16" cy="3" r="1.6"/></symbol>
+  <symbol id="i-progress" viewBox="0 0 24 24"><path d="M4 4v16h17M8 14l4-5 4 3 5-7"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 6-5 4 3 4-5 4 4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 5h2m4 0h2"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3M7 8h10M7 12h10M7 16h6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-gym" viewBox="0 0 24 24"><path d="M3 9v6m3-9v12m12-12v12m3-9v6M6 12h12"/></symbol>
+  <symbol id="i-mark" viewBox="0 0 28 28"><path d="m4 23 8-18 4 10 8-10-8 18-4-10Z"/></symbol>
+</defs></svg>
+<aside class="sidebar">
+  <a class="brand" href="#" aria-label="Stride home"><span class="brand-symbol"><svg class="icon"><use href="#i-mark"/></svg></span>stride<span class="brand-dot">.</span></a>
+  <div class="sidebar-section-label">YOUR SPACE</div>
+  <nav aria-label="Main navigation">
+    <button class="active" data-view="dashboard"><svg class="icon"><use href="#i-grid"/></svg><span>Overview</span></button>
+    <button data-view="activities"><svg class="icon"><use href="#i-run"/></svg><span>Activities</span></button>
+    <button data-view="progress"><svg class="icon"><use href="#i-progress"/></svg><span>Progress</span></button>
+    <button data-view="photos"><svg class="icon"><use href="#i-photo"/></svg><span>Photos</span></button>
+  </nav>
+  <div class="sidebar-note"><span class="little-star">✳</span><p>A little stronger.<br>A little further.<br><b>One day at a time.</b></p></div>
+  <div class="aside-bottom"><div class="avatar">Y</div><div>Your personal space<small>Made for your everyday.</small></div><span class="online-dot"></span></div>
+</aside>
+<main>
+  <header class="topbar"><div class="breadcrumb"><span class="breadcrumb-home">Your training space</span><span class="breadcrumb-slash">/</span><b id="page-label">Overview</b></div><div class="header-actions"><button class="primary" id="add-top"><svg class="icon"><use href="#i-plus"/></svg><span>Log activity</span></button><button class="profile-button" data-view="progress" aria-label="Open your measurements">Y</button></div></header>
+  <section class="heading"><div><div class="eyebrow" id="today"></div><h1 id="title">Your week, <span>in motion.</span></h1><p id="subtitle">A little effort. A little progress. Every day.</p></div><span class="week-label"><span class="status-dot"></span><span id="week-range">This week</span></span></section>
+  <section id="dashboard" class="view">
+    <div class="hero-grid">
+      <section class="hero">
+        <div class="hero-copy"><span class="eyebrow">YOUR WORKOUT. WITHOUT THE TYPING.</span><h2>Less admin.<br>More endorphins.</h2><p>One screenshot. Your run and gym session,<br class="desktop-break"> logged together.</p><button class="primary" id="hero-log"><svg class="icon"><use href="#i-scan"/></svg>Scan screenshot<svg class="icon arrow"><use href="#i-arrow"/></svg></button></div>
+        <div class="import-visual" aria-label="Example of a screenshot containing two activities"><span class="example-label">EXAMPLE IMPORT</span><div class="sample-session sample-gym"><span class="sample-type"><svg class="icon"><use href="#i-gym"/></svg>WEIGHT TRAINING</span><div class="sample-values"><b>1h 2m<small>TIME</small></b><b>189<small>KCAL</small></b></div><span class="sample-check">✓</span></div><div class="sample-session sample-run"><span class="sample-type"><svg class="icon"><use href="#i-run"/></svg>MORNING RUN</span><div class="sample-values"><b>2.61<small>KM</small></b><b>6:51<small>PACE / KM</small></b></div><span class="sample-check">✓</span></div><span class="detected-label"><span class="status-dot"></span>Two sessions. One upload.</span></div>
+      </section>
+      <section class="next-card"><div class="section-head"><span class="eyebrow">ON YOUR CALENDAR</span><svg class="icon"><use href="#i-calendar"/></svg></div><div id="next-booking"><h3>Your next session,<br>right here.</h3><p>Connect Apple Calendar to keep your gym bookings in the loop.</p><button class="next-booking-button" id="dashboard-calendar">Connect your calendar<svg class="icon"><use href="#i-arrow"/></svg></button></div></section>
+    </div>
+    <div class="quick-actions"><span>Make your next move.</span><div><button class="secondary" id="dashboard-run"><svg class="icon"><use href="#i-run"/></svg>Track a run</button><button class="secondary" id="dashboard-log"><svg class="icon"><use href="#i-plus"/></svg>Log a session</button></div></div>
+    <div class="stats-heading"><h3>This week at a glance</h3><span>Every session counts.</span></div>
+    <div class="stats" id="stats"></div>
+    <div class="dashboard-columns">
+      <section class="card feed-card"><div class="section-head"><div><span class="eyebrow">PUTTING IN THE WORK</span><h3>Recent activities</h3></div><button class="text-button" data-view="activities">View all<svg class="icon"><use href="#i-arrow"/></svg></button></div><div id="recent"></div></section>
+      <div class="dashboard-rail"><section class="card week-card"><div class="section-head"><div><span class="eyebrow">YOUR WEEKLY REVIEW</span><h3>A week of movement</h3></div><svg class="icon subdued"><use href="#i-progress"/></svg></div><div class="weekly-total" id="weekly-total">0 <small>minutes moving</small></div><div class="week-chart" id="week-chart"></div><p id="review"></p></section><section class="card body-card"><div class="section-head"><h3>Body check-in</h3><button class="text-button" data-view="progress" aria-label="Update measurements"><svg class="icon"><use href="#i-arrow"/></svg></button></div><div class="body-values"><div><span class="metric-label">BMI</span><div class="bmi-number" id="bmi-value">— <small>BMI</small></div></div><div><span class="metric-label">WEIGHT</span><strong id="weight-value">— <small>kg</small></strong></div><div><span class="metric-label">HEIGHT</span><strong id="height-value">— <small>cm</small></strong></div></div><div class="bmi-scale"></div><p id="body-summary">Add your measurements to start tracking.</p><small class="note">BMI is an adult screening measure, not a diagnosis.</small></section></div>
+    </div>
+  </section>
+  <section id="activities" class="view" hidden><section class="card history-card"><div class="section-head"><div><span class="eyebrow">THE WORK YOU'VE PUT IN</span><h3>Your activity history</h3></div><label class="filter-label"><span class="sr-only">Filter activities</span><select id="filter"><option>All activities</option><option>Run</option><option>Gym</option></select></label></div><div id="all-activities"></div></section></section>
+  <section id="progress" class="view" hidden><div class="two-columns"><section class="card measurements-card"><span class="eyebrow">A MOMENT FOR YOURSELF</span><h3>Your measurements</h3><p>Check in today. See how things change over time.</p><form id="body-form"><div class="form-row"><label>Height <span class="label-unit">cm</span><input name="height" type="number" min="50" max="300" step="0.1" placeholder="170" required></label><label>Weight <span class="label-unit">kg</span><input name="weight" type="number" min="10" max="500" step="0.1" placeholder="65" required></label></div><button class="primary">Save check-in<svg class="icon"><use href="#i-arrow"/></svg></button></form><p class="note">Adult BMI does not account for muscle mass, pregnancy, or individual health needs.</p></section><section class="card"><span class="eyebrow">PROGRESS, AT YOUR PACE</span><h3>Weight check-ins</h3><div id="weight-history"></div></section></div></section>
+  <section id="photos" class="view" hidden><section class="card"><div class="section-head"><div><span class="eyebrow">MORE THAN A NUMBER</span><h3>Your photo journal</h3><p>Little moments. Visible progress. All yours.</p></div><label class="primary upload"><svg class="icon"><use href="#i-plus"/></svg>Add photo<input type="file" id="photo-input" accept="image/*" hidden></label></div><div id="gallery"></div></section></section>
+  <footer><span>YOUR PACE. YOUR PROGRESS.</span><span class="footer-brand">stride<span>.</span></span></footer>
+</main>
+<dialog id="activity-dialog"><form id="activity-form"><div class="section-head"><div><span class="eyebrow">ANOTHER ONE IN THE BOOKS</span><h3>Log an activity</h3></div><button type="button" id="close-dialog" class="close" aria-label="Close">×</button></div><label>Session type<select name="type"><option>Run</option><option>Gym</option></select></label><label>Session name<input name="title" placeholder="Morning miles or leg day" maxlength="100" required></label><div class="form-row"><label>Date<input name="date" type="date" required></label><label>Duration (mm:ss or 1h 2m)<input name="duration" placeholder="17:53" required></label></div><div class="form-row"><label id="distance-label">Distance (km)<input name="distance" type="number" min="0.01" max="1000" step="0.01" placeholder="2.61" required></label><label id="pace-label">Pace (min:sec / km)<input name="pace" placeholder="Calculated if blank"></label></div><label>Calories (kcal, optional)<input name="calories" type="number" min="0" max="20000" step="1" placeholder="Leave blank if unknown"></label><label>Notes / exercises<textarea name="notes" placeholder="Sets, reps, or how it felt." maxlength="2000"></textarea></label><button class="primary">Save activity<svg class="icon"><use href="#i-arrow"/></svg></button></form></dialog>
+<div id="toast" role="status"></div>
+<script type="importmap">{"imports":{"ical.js":"/vendor/ical.js"}}</script><script src="/ocr/tesseract.min.js"></script><script type="module" src="/app.js"></script>
+</body></html>

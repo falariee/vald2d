@@ -1,0 +1,7 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {parseActivities,parseDuration,formatDuration} from './ocr-parser.js';
+test('extracts both sessions without inventing missing run calories',()=>{const result=parseActivities('Morning Weight Training\nTime Avg HR Cal\n1h 2m 108 bpm 189 Cal\nKudos on your 10th activity!\nMorning Run to gym\nDistance Pace Time Achievements\n2.61 km 6:51 /km 17m 53s');assert.deepEqual(result,[{type:'Gym',title:'Morning Weight Training',durationSeconds:3720,distance:null,paceSeconds:null,calories:189},{type:'Run',title:'Morning Run to gym',durationSeconds:1073,distance:2.61,paceSeconds:411,calories:null}])});
+test('parses clock durations and excludes pace from session duration',()=>{const [run]=parseActivities('Evening Run\n5.00 km 5:30 /km\nTime 00:27:30\nCalories 320');assert.equal(run.durationSeconds,1650);assert.equal(run.calories,320);assert.equal(run.paceSeconds,330)});
+test('duration validation and formatting preserve seconds',()=>{assert.equal(parseDuration('17:53'),1073);assert.equal(parseDuration('1h 2m'),3720);assert.equal(parseDuration('5:99'),null);assert.equal(parseDuration('nonsense'),null);assert.equal(formatDuration(1073),'17:53');assert.equal(formatDuration(3720),'1:02:00')});
+test('unrelated screenshot produces no fabricated sessions',()=>assert.deepEqual(parseActivities('Posts\nToday at 06:15\n10 activities\n189 Cal'),[]));
